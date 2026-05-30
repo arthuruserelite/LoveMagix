@@ -1,4 +1,4 @@
-```html
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -6,122 +6,203 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Love & Magix</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 <style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family: Arial, sans-serif;
 }
 
 body{
-    background: linear-gradient(135deg, #0d47a1, #1976d2);
-    color:white;
+    font-family:'Poppins',sans-serif;
+    background:#050b1d;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+/* Fundo */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+    radial-gradient(circle at top left,#4f46e5 0%,transparent 40%),
+    radial-gradient(circle at bottom right,#06b6d4 0%,transparent 40%);
+    opacity:.8;
+    z-index:-2;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    backdrop-filter:blur(120px);
+    z-index:-1;
+}
+
+/* Hero */
+.hero{
     min-height:100vh;
-}
-
-header{
+    display:flex;
+    align-items:center;
+    justify-content:center;
     text-align:center;
-    padding:80px 20px;
+    padding:40px;
 }
 
-header h1{
-    font-size:4rem;
-    letter-spacing:2px;
-    text-shadow:0 0 20px rgba(255,255,255,0.3);
+.hero-content{
+    max-width:900px;
 }
 
-.container{
-    max-width:1000px;
-    margin:auto;
-    padding:20px;
-}
-
-.card{
-    background:rgba(255,255,255,0.1);
+.badge{
+    display:inline-block;
+    padding:10px 18px;
+    border:1px solid rgba(255,255,255,.15);
+    background:rgba(255,255,255,.05);
+    border-radius:999px;
     backdrop-filter:blur(10px);
-    border-radius:15px;
-    padding:30px;
     margin-bottom:25px;
 }
 
-.card h2{
-    margin-bottom:15px;
+h1{
+    font-size:clamp(3rem,10vw,7rem);
+    font-weight:700;
+    line-height:1;
+    margin-bottom:20px;
 }
 
-.card ul{
-    padding-left:20px;
+.gradient{
+    background:linear-gradient(90deg,#60a5fa,#22d3ee,#c084fc);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
 }
 
-.card li{
-    margin:10px 0;
+.subtitle{
+    font-size:1.2rem;
+    opacity:.8;
+    max-width:650px;
+    margin:auto;
+    margin-bottom:40px;
 }
 
-.download{
-    text-align:center;
-}
-
+/* Botão */
 .download-btn{
-    display:inline-block;
-    background:white;
-    color:#1565c0;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
     text-decoration:none;
-    padding:15px 35px;
-    border-radius:10px;
-    font-weight:bold;
-    transition:0.3s;
+    color:white;
+    background:linear-gradient(135deg,#3b82f6,#8b5cf6);
+    padding:18px 35px;
+    border-radius:16px;
+    font-weight:600;
+    transition:.3s;
+    box-shadow:0 15px 40px rgba(59,130,246,.35);
 }
 
 .download-btn:hover{
-    transform:scale(1.05);
+    transform:translateY(-4px);
+}
+
+/* Cards */
+.section{
+    max-width:1200px;
+    margin:auto;
+    padding:0 25px 100px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:24px;
+    padding:30px;
+    backdrop-filter:blur(15px);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    border-color:rgba(96,165,250,.4);
+}
+
+.card h3{
+    margin-bottom:12px;
+    font-size:1.3rem;
+}
+
+.card p{
+    opacity:.8;
+    line-height:1.7;
 }
 
 footer{
     text-align:center;
-    padding:20px;
-    opacity:0.8;
+    padding:40px;
+    opacity:.6;
 }
 </style>
 </head>
-
 <body>
 
-<header>
-    <h1>Love & Magix</h1>
-</header>
+<section class="hero">
+    <div class="hero-content">
 
-<div class="container">
+        <div class="badge">
+            ✨ Site Oficial
+        </div>
 
-    <div class="card">
-        <h2>Sobre o Jogo</h2>
-        <p>
-            Embarque em uma aventura cheia de magia, descobertas e personagens únicos.
+        <h1>
+            <span class="gradient">Love & Magix</span>
+        </h1>
+
+        <p class="subtitle">
+            Descubra um universo mágico repleto de aventuras, escolhas e segredos.
         </p>
-    </div>
 
-    <div class="card">
-        <h2>Recursos</h2>
-        <ul>
-            <li>✨ Mundo mágico para explorar</li>
-            <li>❤️ Sistema de relacionamentos</li>
-            <li>🧙 Magias e habilidades especiais</li>
-            <li>📖 História envolvente</li>
-        </ul>
-    </div>
-
-    <div class="card download">
-        <h2>Download</h2>
-        <p>Disponível em breve.</p>
-        <br>
-
-        <!-- Adicione o link do jogo aqui futuramente -->
+        <!-- Troque o # pelo link do jogo -->
         <a href="#" class="download-btn">
-            Download em Breve
+            🚀 Download em Breve
         </a>
 
     </div>
+</section>
 
-</div>
+<section class="section">
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>🌌 Mundo Fantástico</h3>
+            <p>
+                Explore cenários mágicos criados para proporcionar uma experiência única.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>✨ Magias Poderosas</h3>
+            <p>
+                Descubra habilidades especiais e domine forças misteriosas.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>❤️ Personagens Únicos</h3>
+            <p>
+                Conheça personagens marcantes e tome decisões que mudam a história.
+            </p>
+        </div>
+
+    </div>
+
+</section>
 
 <footer>
     © 2026 Love & Magix
