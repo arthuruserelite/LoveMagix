@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -20,34 +19,81 @@ body{
     background:#050b1d;
     color:#fff;
     overflow-x:hidden;
+    position:relative;
 }
 
-/* Fundo */
+/* Fundo animado */
 body::before{
     content:"";
     position:fixed;
-    inset:0;
-    background:
-    radial-gradient(circle at top left,#4f46e5 0%,transparent 40%),
-    radial-gradient(circle at bottom right,#06b6d4 0%,transparent 40%);
-    opacity:.8;
-    z-index:-2;
+    width:900px;
+    height:900px;
+    border-radius:50%;
+    background:#2563eb;
+    filter:blur(180px);
+    top:-300px;
+    left:-300px;
+    opacity:.4;
+    animation:float1 15s ease-in-out infinite alternate;
+    z-index:-3;
 }
 
 body::after{
     content:"";
     position:fixed;
+    width:800px;
+    height:800px;
+    border-radius:50%;
+    background:#7c3aed;
+    filter:blur(180px);
+    bottom:-300px;
+    right:-300px;
+    opacity:.35;
+    animation:float2 18s ease-in-out infinite alternate;
+    z-index:-3;
+}
+
+@keyframes float1{
+    from{transform:translate(0,0);}
+    to{transform:translate(250px,180px);}
+}
+
+@keyframes float2{
+    from{transform:translate(0,0);}
+    to{transform:translate(-250px,-180px);}
+}
+
+/* Partículas */
+.particles{
+    position:fixed;
     inset:0;
-    backdrop-filter:blur(120px);
-    z-index:-1;
+    background-image:
+        radial-gradient(2px 2px at 10% 20%, white, transparent),
+        radial-gradient(2px 2px at 30% 70%, white, transparent),
+        radial-gradient(3px 3px at 50% 30%, white, transparent),
+        radial-gradient(2px 2px at 80% 60%, white, transparent),
+        radial-gradient(2px 2px at 90% 15%, white, transparent);
+    background-size:350px 350px;
+    animation:stars 20s linear infinite;
+    opacity:.35;
+    z-index:-2;
+}
+
+@keyframes stars{
+    from{
+        transform:translateY(0);
+    }
+    to{
+        transform:translateY(-350px);
+    }
 }
 
 /* Hero */
 .hero{
     min-height:100vh;
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
     text-align:center;
     padding:40px;
 }
@@ -58,23 +104,27 @@ body::after{
 
 .badge{
     display:inline-block;
-    padding:10px 18px;
-    border:1px solid rgba(255,255,255,.15);
-    background:rgba(255,255,255,.05);
+    padding:10px 20px;
     border-radius:999px;
+    border:1px solid rgba(255,255,255,.1);
+    background:rgba(255,255,255,.05);
     backdrop-filter:blur(10px);
     margin-bottom:25px;
 }
 
 h1{
-    font-size:clamp(3rem,10vw,7rem);
-    font-weight:700;
+    font-size:clamp(4rem,10vw,8rem);
     line-height:1;
-    margin-bottom:20px;
+    margin-bottom:25px;
 }
 
 .gradient{
-    background:linear-gradient(90deg,#60a5fa,#22d3ee,#c084fc);
+    background:linear-gradient(
+        90deg,
+        #60a5fa,
+        #22d3ee,
+        #a855f7
+    );
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
 }
@@ -82,31 +132,34 @@ h1{
 .subtitle{
     font-size:1.2rem;
     opacity:.8;
-    max-width:650px;
+    max-width:700px;
     margin:auto;
     margin-bottom:40px;
 }
 
 /* Botão */
 .download-btn{
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
+    display:inline-block;
+    padding:18px 40px;
+    border-radius:18px;
     text-decoration:none;
     color:white;
-    background:linear-gradient(135deg,#3b82f6,#8b5cf6);
-    padding:18px 35px;
-    border-radius:16px;
     font-weight:600;
+    font-size:1.1rem;
+    background:linear-gradient(
+        135deg,
+        #2563eb,
+        #7c3aed
+    );
+    box-shadow:0 15px 40px rgba(37,99,235,.35);
     transition:.3s;
-    box-shadow:0 15px 40px rgba(59,130,246,.35);
 }
 
 .download-btn:hover{
-    transform:translateY(-4px);
+    transform:translateY(-5px) scale(1.03);
 }
 
-/* Cards */
+/* Seção */
 .section{
     max-width:1200px;
     margin:auto;
@@ -115,26 +168,26 @@ h1{
 
 .grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
     gap:25px;
 }
 
 .card{
     background:rgba(255,255,255,.06);
     border:1px solid rgba(255,255,255,.08);
-    border-radius:24px;
+    border-radius:25px;
     padding:30px;
     backdrop-filter:blur(15px);
     transition:.3s;
 }
 
 .card:hover{
-    transform:translateY(-8px);
+    transform:translateY(-10px);
     border-color:rgba(96,165,250,.4);
 }
 
 .card h3{
-    margin-bottom:12px;
+    margin-bottom:15px;
     font-size:1.3rem;
 }
 
@@ -145,14 +198,17 @@ h1{
 
 footer{
     text-align:center;
-    padding:40px;
+    padding:50px;
     opacity:.6;
 }
 </style>
 </head>
 <body>
 
+<div class="particles"></div>
+
 <section class="hero">
+
     <div class="hero-content">
 
         <div class="badge">
@@ -164,15 +220,16 @@ footer{
         </h1>
 
         <p class="subtitle">
-            Descubra um universo mágico repleto de aventuras, escolhas e segredos.
+            Bem-vindo ao universo de Love & Magix.
         </p>
 
-        <!-- Troque o # pelo link do jogo -->
+        <!-- COLOQUE O LINK DO JOGO AQUI -->
         <a href="#" class="download-btn">
-            🚀 Acesso em Breve
+            🚀 Download em Breve
         </a>
 
     </div>
+
 </section>
 
 <section class="section">
@@ -182,21 +239,21 @@ footer{
         <div class="card">
             <h3>🌌 Mundo Fantástico</h3>
             <p>
-                Explore cenários mágicos criados para proporcionar uma experiência única.
+                Explore um universo mágico cheio de mistérios e aventuras.
             </p>
         </div>
 
         <div class="card">
             <h3>✨ Magias Poderosas</h3>
             <p>
-                Descubra habilidades especiais e domine forças misteriosas.
+                Descubra habilidades especiais e domine forças incríveis.
             </p>
         </div>
 
         <div class="card">
             <h3>❤️ Personagens Únicos</h3>
             <p>
-                Conheça personagens marcantes e tome decisões que mudam a história.
+                Conheça personagens marcantes e viva uma história inesquecível.
             </p>
         </div>
 
